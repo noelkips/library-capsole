@@ -1,0 +1,412 @@
+[
+  {
+    "model": "core.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "pbkdf2_sha256$720000$randomsalt$hashedpasswordplaceholder",
+      "is_staff": true,
+      "is_superuser": true,
+      "is_active": true,
+      "date_of_membership": "2025-09-09",
+      "last_login": null,
+      "first_name": "",
+      "last_name": ""
+    }
+  },
+  {
+    "model": "core.user",
+    "pk": 2,
+    "fields": {
+      "username": "user1",
+      "email": "user1@example.com",
+      "password": "pbkdf2_sha256$720000$randomsalt$hashedpasswordplaceholder",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_of_membership": "2025-09-01",
+      "last_login": null,
+      "first_name": "John",
+      "last_name": "Doe"
+    }
+  },
+  {
+    "model": "core.user",
+    "pk": 3,
+    "fields": {
+      "username": "user2",
+      "email": "user2@example.com",
+      "password": "pbkdf2_sha256$720000$randomsalt$hashedpasswordplaceholder",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_of_membership": "2025-09-02",
+      "last_login": null,
+      "first_name": "Jane",
+      "last_name": "Smith"
+    }
+  },
+  {
+    "model": "core.user",
+    "pk": 4,
+    "fields": {
+      "username": "user3",
+      "email": "user3@example.com",
+      "password": "pbkdf2_sha256$720000$randomsalt$hashedpasswordplaceholder",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_of_membership": "2025-09-03",
+      "last_login": null,
+      "first_name": "Alice",
+      "last_name": "Johnson"
+    }
+  },
+  {
+    "model": "core.user",
+    "pk": 5,
+    "fields": {
+      "username": "user4",
+      "email": "user4@example.com",
+      "password": "pbkdf2_sha256$720000$randomsalt$hashedpasswordplaceholder",
+      "is_staff": false,
+      "is_superuser": false,
+      "is_active": true,
+      "date_of_membership": "2025-09-04",
+      "last_login": null,
+      "first_name": "Bob",
+      "last_name": "Brown"
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 1,
+    "fields": {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "isbn": "9780446310789",
+      "published_date": "1960-07-11",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 2,
+    "fields": {
+      "title": "1984",
+      "author": "George Orwell",
+      "isbn": "9780451524935",
+      "published_date": "1949-06-08",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 3,
+    "fields": {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "isbn": "9780141439518",
+      "published_date": "1813-01-28",
+      "copies_available": 3
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 4,
+    "fields": {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "isbn": "9780743273565",
+      "published_date": "1925-04-10",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 5,
+    "fields": {
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "isbn": "9780316769488",
+      "published_date": "1951-07-16",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 6,
+    "fields": {
+      "title": "Lord of the Flies",
+      "author": "William Golding",
+      "isbn": "9780399501487",
+      "published_date": "1954-09-17",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 7,
+    "fields": {
+      "title": "Animal Farm",
+      "author": "George Orwell",
+      "isbn": "9780451526342",
+      "published_date": "1945-08-17",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 8,
+    "fields": {
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "isbn": "9780060850524",
+      "published_date": "1932-01-01",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 9,
+    "fields": {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "isbn": "9780345339683",
+      "published_date": "1937-09-21",
+      "copies_available": 3
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 10,
+    "fields": {
+      "title": "Fahrenheit 451",
+      "author": "Ray Bradbury",
+      "isbn": "9781451673319",
+      "published_date": "1953-10-19",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 11,
+    "fields": {
+      "title": "Jane Eyre",
+      "author": "Charlotte Brontë",
+      "isbn": "9780141441146",
+      "published_date": "1847-10-16",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 12,
+    "fields": {
+      "title": "Wuthering Heights",
+      "author": "Emily Brontë",
+      "isbn": "9780141439556",
+      "published_date": "1847-12-01",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 13,
+    "fields": {
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "isbn": "9780544003415",
+      "published_date": "1954-07-29",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 14,
+    "fields": {
+      "title": "Catch-22",
+      "author": "Joseph Heller",
+      "isbn": "9781451626650",
+      "published_date": "1961-11-10",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 15,
+    "fields": {
+      "title": "The Grapes of Wrath",
+      "author": "John Steinbeck",
+      "isbn": "9780143039433",
+      "published_date": "1939-04-14",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 16,
+    "fields": {
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "isbn": "9780142437247",
+      "published_date": "1851-10-18",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 17,
+    "fields": {
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "isbn": "9780441172719",
+      "published_date": "1965-08-01",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 18,
+    "fields": {
+      "title": "The Odyssey",
+      "author": "Homer",
+      "isbn": "9780140268867",
+      "published_date": "0800-01-01",
+      "copies_available": 3
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 19,
+    "fields": {
+      "title": "Slaughterhouse-Five",
+      "author": "Kurt Vonnegut",
+      "isbn": "9780385333849",
+      "published_date": "1969-03-31",
+      "copies_available": 1
+    }
+  },
+  {
+    "model": "core.book",
+    "pk": 20,
+    "fields": {
+      "title": "The Bell Jar",
+      "author": "Sylvia Plath",
+      "isbn": "9780060837020",
+      "published_date": "1963-01-14",
+      "copies_available": 2
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "book": 1,
+      "checkout_date": "2025-09-01T10:00:00Z",
+      "due_date": "2025-09-15T10:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "book": 2,
+      "checkout_date": "2025-09-02T12:00:00Z",
+      "due_date": "2025-09-16T12:00:00Z",
+      "return_date": "2025-09-10T12:00:00Z"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "book": 3,
+      "checkout_date": "2025-08-25T14:00:00Z",
+      "due_date": "2025-09-08T14:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "book": 4,
+      "checkout_date": "2025-09-03T09:00:00Z",
+      "due_date": "2025-09-17T09:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "book": 5,
+      "checkout_date": "2025-09-04T11:00:00Z",
+      "due_date": "2025-09-18T11:00:00Z",
+      "return_date": "2025-09-09T11:00:00Z"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 6,
+    "fields": {
+      "user": 3,
+      "book": 6,
+      "checkout_date": "2025-08-20T13:00:00Z",
+      "due_date": "2025-09-03T13:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 7,
+    "fields": {
+      "user": 4,
+      "book": 7,
+      "checkout_date": "2025-09-05T15:00:00Z",
+      "due_date": "2025-09-19T15:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 8,
+    "fields": {
+      "user": 5,
+      "book": 8,
+      "checkout_date": "2025-09-06T10:00:00Z",
+      "due_date": "2025-09-20T10:00:00Z",
+      "return_date": null
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 9,
+    "fields": {
+      "user": 2,
+      "book": 9,
+      "checkout_date": "2025-09-07T12:00:00Z",
+      "due_date": "2025-09-21T12:00:00Z",
+      "return_date": "2025-09-09T12:00:00Z"
+    }
+  },
+  {
+    "model": "core.transaction",
+    "pk": 10,
+    "fields": {
+      "user": 3,
+      "book": 10,
+      "checkout_date": "2025-08-15T14:00:00Z",
+      "due_date": "2025-08-29T14:00:00Z",
+      "return_date": null
+    }
+  }
+]

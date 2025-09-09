@@ -1,9 +1,11 @@
-
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.utils import timezone
 from datetime import timedelta
+
+def default_due_date():
+    return timezone.now() + timedelta(days=14)
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -28,6 +30,10 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    def delete(self, *args, **kwargs):
+        self.is_active = False
+        self.save()
+
 class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
@@ -43,10 +49,10 @@ class Book(models.Model):
         return self.title
 
 class Transaction(models.Model):
-    user = models.ForeignKey('core.User', on_delete=models.CASCADE)
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ForeignKey('core.User', on_delete=models.CASCADE, related_name='transactions')
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='transactions')
     checkout_date = models.DateTimeField(default=timezone.now)
-    due_date = models.DateTimeField(default=lambda: timezone.now() + timedelta(days=14))
+    due_date = models.DateTimeField(default=default_due_date)  # Use callable function
     return_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
