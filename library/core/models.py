@@ -1,25 +1,25 @@
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.utils import timezone
-
+from datetime import timedelta
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     date_of_membership = models.DateField(default=timezone.now)
     is_active = models.BooleanField(default=True)
 
-    # Add related_name to avoid clash with auth.User
     groups = models.ManyToManyField(
         'auth.Group',
-        related_name='core_user_set',  # Unique name for core.User reverse accessor
+        related_name='core_user_set',
         blank=True,
         help_text='The groups this user belongs to.',
         related_query_name='core_user',
     )
     user_permissions = models.ManyToManyField(
         'auth.Permission',
-        related_name='core_user_set',  # Unique name for core.User reverse accessor
+        related_name='core_user_set',
         blank=True,
         help_text='Specific permissions for this user.',
         related_query_name='core_user',
@@ -27,7 +27,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
-
 
 class Book(models.Model):
     title = models.CharField(max_length=255)
@@ -42,3 +41,13 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+class Transaction(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    checkout_date = models.DateTimeField(default=timezone.now)
+    due_date = models.DateTimeField(default=lambda: timezone.now() + timedelta(days=14))
+    return_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"

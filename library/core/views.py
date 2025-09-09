@@ -1,7 +1,11 @@
-from rest_framework import viewsets
+
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-from .models import User, Book
-from .serializers import UserSerializer, BookSerializer
+from rest_framework.response import Response
+from .models import User, Book, Transaction
+from .serializers import UserSerializer, BookSerializer, TransactionSerializer
+from django.utils import timezone
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -42,3 +46,40 @@ class BookViewSet(viewsets.ModelViewSet):
         if isbn:
             queryset = queryset.filter(isbn=isbn)
         return queryset
+
+class TransactionViewSet(viewsets.ModelViewSet):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
+    permission_classes = [IsAuthenticated]
+
+    @action(detail=False, methods=['post'], url_path='checkout')
+    def checkout(self, request):
+        book_id = request.data.get('book_id')
+        try:
+            book = Book.objects.get(id=book_id)
+        except Book.DoesNotExist:
+            return Response({"error": "Book not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = self.get_serializer(data={
+            'user': request.user.id,
+            'book': book.id
+        })
+        serializer.is_valid(raise_exception=True)
+        book.copies_available -= 1
+        book.save()
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['put'], url_path='return')
+    def return_book(self, request, pk=None):
+        try:
+            transaction = Transaction.objects.get(pk=pk, user=request.user, return_date__isnull=True)
+        except Transaction.DoesNotExist:
+            return Response({"error": "Transaction not found or already returned"}, status=status.HTTP_404_NOT_FOUND)
+        
+        transaction.return_date = timezone.now()
+        transaction.book.copies_available += 1
+        transaction.book.save()
+        transaction.save()
+        serializer = self.get_serializer(transaction)
+        return Response(serializer.data, status=status.HTTP_200_OK)
