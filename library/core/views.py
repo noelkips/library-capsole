@@ -83,3 +83,9 @@ class TransactionViewSet(viewsets.ModelViewSet):
         transaction.save()
         serializer = self.get_serializer(transaction)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['get'], url_path='overdue', permission_classes=[IsAdminUser])
+    def overdue(self, request):
+        overdue = Transaction.objects.filter(return_date__isnull=True, due_date__lt=timezone.now())
+        serializer = self.get_serializer(overdue, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

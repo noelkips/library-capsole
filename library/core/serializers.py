@@ -1,5 +1,7 @@
+
 from rest_framework import serializers
-from .models import User, Book
+from .models import User, Book, Transaction
+from django.utils import timezone
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,3 +28,18 @@ class BookSerializer(serializers.ModelSerializer):
         if value < 0:
             raise serializers.ValidationError("Copies available cannot be negative.")
         return value
+
+class TransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Transaction
+        fields = ['id', 'user', 'book', 'checkout_date', 'due_date', 'return_date']
+        read_only_fields = ['checkout_date', 'due_date']
+
+    def validate(self, data):
+        book = data['book']
+        user = data['user']
+        if book.copies_available == 0:
+            raise serializers.ValidationError("No copies available.")
+        if Transaction.objects.filter(user=user, book=book, return_date__isnull=True).exists():
+            raise serializers.ValidationError("User already has this book checked out.")
+        return data

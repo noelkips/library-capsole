@@ -43,7 +43,7 @@ class Book(models.Model):
         return self.title
 
 class Transaction(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey('core.User', on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     checkout_date = models.DateTimeField(default=timezone.now)
     due_date = models.DateTimeField(default=lambda: timezone.now() + timedelta(days=14))
