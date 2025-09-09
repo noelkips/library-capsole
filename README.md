@@ -101,7 +101,7 @@ Update the WSGI file in PythonAnywhere’s Web tab to point to library/wsgi.py.
 
 
 Access the API:
-Swagger UI: https://<yourusername>.pythonanywhere.com/swagger/
+Swagger UI: https://librarycapsole.pythonanywhere.com/swagger/
 
 
 
